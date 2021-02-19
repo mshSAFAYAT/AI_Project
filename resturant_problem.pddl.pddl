@@ -1,0 +1,122 @@
+;; Custom_Bazarxample problem for the final formulation of the linehaul domain
+;; (with types and costs), from Chapter 2.
+;; VAL@github syntax checker: no errors, no warnings.
+
+(define (problem linehaul_example)
+  (:domain restaurant_with_costs)
+
+  (:objects
+    Rockect rocket_Delivery
+    Delivery_Van - deliver_man
+    Dine_In deliver_man  - agent
+    Shop Firigi_Bazar Custom_Bazar Reazuddin_Bazar - location
+    Burger Pitha IceCream - food
+    ;; Declare objects for integers, up to the largest quantity
+    ;; that appears in the problem:
+    n0 n1 n2 n3 n4 n5 n6 n7 n8 n9
+    n10 n11 n12 n13 n14 n15 n16 n17 n18 n19
+    n20 n21 n22 n23 n24 n25 n26 n27 n28 n29
+    n30 n31 n32 n33 n34 n35 n36 n37 n38 n39
+    n40 - quantity
+    )
+
+  (:init
+    (at Delivery_Van Shop)
+    (at Rockect Shop)
+    (at Dine_In Shop)
+    (free_capacity Delivery_Van n40)
+    (free_capacity Rockect n40)
+    (free_capacity Dine_In n34)
+    (demand_dineIn_foods Shop n2 Pitha)
+    ; (demand_ambient_goods Firigi_Bazar n12)
+    ; (demand_home_foods Custom_Bazar n7)
+    ; (demand_quick_goods Custom_Bazar n6)
+     ;(demand_quick_goods Custom_Bazar n1 Vat)
+    (demand_home_foods Custom_Bazar n2 Burger)
+    ; (demand_home_foods Reazuddin_Bazar n3)
+    ;(demand_ambient_goods Shop n1 Pitha)
+    (plus1 n0 n1)
+    (plus1 n1 n2)
+    (plus1 n2 n3)
+    (plus1 n3 n4)
+    (plus1 n4 n5)
+    (plus1 n5 n6)
+    (plus1 n6 n7)
+    (plus1 n7 n8)
+    (plus1 n8 n9)
+    (plus1 n9 n10)
+    (plus1 n10 n11)
+    (plus1 n11 n12)
+    (plus1 n12 n13)
+    (plus1 n13 n14)
+    (plus1 n14 n15)
+    (plus1 n15 n16)
+    (plus1 n16 n17)
+    (plus1 n17 n18)
+    (plus1 n18 n19)
+    (plus1 n19 n20)
+    (plus1 n20 n21)
+    (plus1 n21 n22)
+    (plus1 n22 n23)
+    (plus1 n23 n24)
+    (plus1 n24 n25)
+    (plus1 n25 n26)
+    (plus1 n26 n27)
+    (plus1 n27 n28)
+    (plus1 n28 n29)
+    (plus1 n29 n30)
+    (plus1 n30 n31)
+    (plus1 n31 n32)
+    (plus1 n32 n33)
+    (plus1 n33 n34)
+    (plus1 n34 n35)
+    (plus1 n35 n36)
+    (plus1 n36 n37)
+    (plus1 n37 n38)
+    (plus1 n38 n39)
+    (plus1 n39 n40)
+    (checkIceCream IceCream IceCream)
+    (checkn0 n39 n40)
+    (= (distance Shop Shop) 0)
+    (= (distance Shop Firigi_Bazar) 5)
+    (= (distance Shop Custom_Bazar) 10)
+    (= (distance Shop Reazuddin_Bazar) 7)
+    (= (distance Firigi_Bazar Shop) 5)
+    (= (distance Firigi_Bazar Firigi_Bazar) 0)
+    (= (distance Firigi_Bazar Custom_Bazar) 16)
+    (= (distance Firigi_Bazar Reazuddin_Bazar) 2)
+    (= (distance Custom_Bazar Shop) 10)
+    (= (distance Custom_Bazar Firigi_Bazar) 16)
+    (= (distance Custom_Bazar Custom_Bazar) 0)
+    (= (distance Custom_Bazar Reazuddin_Bazar) 13)
+    (= (distance Reazuddin_Bazar Shop) 7)
+    (= (distance Reazuddin_Bazar Firigi_Bazar) 2)
+    (= (distance Reazuddin_Bazar Custom_Bazar) 13)
+    (= (distance Reazuddin_Bazar Reazuddin_Bazar) 0)
+    (= (per_km_cost Rockect) 6.00)
+    (= (per_km_cost Delivery_Van) 3.00)
+    (= (per_km_cost Dine_In) 0.50)
+    (= (foodPrice Burger) 15)
+    (= (foodPrice Pitha) 5)
+    (= (foodPrice IceCream) 20)
+    (= (total-cost) 0)
+    (= (delivery-cost) 0)
+    (= (food-cost) 0)
+    )
+
+   (:goal ( and (demand_dineIn_foods Shop n0 Pitha)
+            ;   (demand_ambient_goods Firigi_Bazar n0)
+            ;   (demand_chilled_goods Custom_Bazar n0)
+             (demand_home_foods Custom_Bazar n0 Burger)
+             ; (demand_cold_goods Custom_Bazar n0)
+             ;  (demand_quick_goods Custom_Bazar n0 Vat)
+            ;   (demand_chilled_goods Reazuddin_Bazar n0)
+             ;  (demand_ambient_goods Shop n0 Pitha)
+              (at Delivery_Van Shop)
+              (at Rockect Shop)
+              (at Dine_In Shop))
+	 )
+
+  (:metric minimize (total-cost))
+
+  )
