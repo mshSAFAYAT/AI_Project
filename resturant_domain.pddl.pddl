@@ -1,6 +1,5 @@
 ;; Final formulation of the linehaul domain (with types and costs),
-;; from Chapter 2.
-;; VAL@github syntax checker: no errors, no warnings.
+
 
 (define (domain restaurant_with_costs)
   (:requirements :strips :typing :action-costs)

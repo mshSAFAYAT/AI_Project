@@ -1,8 +1,5 @@
-;; Custom_Bazarxample problem for the final formulation of the linehaul domain
-;; (with types and costs), from Chapter 2.
-;; VAL@github syntax checker: no errors, no warnings.
 
-(define (problem linehaul_example)
+(define (problem restaurant_example)
   (:domain restaurant_with_costs)
 
   (:objects
